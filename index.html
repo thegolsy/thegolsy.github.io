@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>THE GOLSY — GOLDENSYNAP</title>
+  <meta name="description" content="GOLDENSYNAP(골든시냅) · THE GOLSY — 모든 정보를 가치있게 연결합니다.">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="#top" aria-label="THE GOLSY Home">
+        <img src="assets/logo.png" alt="THE GOLSY Logo" class="logo" id="logoBtn">
+        <span>THE GOLSY</span>
+      </a>
+      <nav class="nav">
+        <a href="#store" class="nav-link">Golsy Store</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#channels" class="nav-link">Channels</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container center">
+        <h1>GOLDENSYNAP</h1>
+        <p class="lead">모든 정보를 가치있게 연결합니다.</p>
+        <div class="cta">
+          <button class="btn" id="openRoadmap">로드맵 보기</button>
+          <a class="btn outline" href="#store">Golsy Store</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="store" class="section">
+      <div class="container">
+        <h2>Golsy Store</h2>
+        <p class="muted">전자상거래 채널로 연결합니다. 실제 링크로 교체하세요.</p>
+        <div class="links">
+          <a class="btn outline" href="https://smartstore.naver.com/your-store-slug" target="_blank" rel="noopener">네이버 스마트스토어</a>
+          <a class="btn outline disabled" href="#" aria-disabled="true" title="오픈 후 연결 예정">쿠팡 스토어 (오픈 예정)</a>
+        </div>
+        <p class="tiny muted">※ 링크는 오픈 완료 후 <code>index.html</code>에서 교체</p>
+      </div>
+    </section>
+
+    <section id="about" class="section alt">
+      <div class="container grid-2">
+        <div>
+          <h2>About GOLDENSYNAP</h2>
+          <p>회사명 <strong>GOLDENSYNAP(골든시냅)</strong>, 대표 브랜드 <strong>THE GOLSY</strong>.</p>
+          <p>설립일: <strong>2025-08-05</strong> · 개인사업자로 시작하여 3년 내 법인 전환 목표.<br>
+          철학: <em>“모든 정보를 가치있게 연결하자.”</em></p>
+          <ul class="checks">
+            <li>1단계: Golsy Store — 전자상거래(네이버, 쿠팡 등)</li>
+            <li>2단계: Golsy Studio — 유튜브·치지직 등 글로벌 미디어</li>
+            <li>3단계: 가상 아이돌·애니메이션·굿즈 연계</li>
+            <li>4단계: Meta Golsy(메타버스/블록체인)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>로고 의미</h3>
+          <p>사자의 심장과 사자자리의 기운에서 영감을 받은 상징으로,
+          다가올 물병자리 시대에 대비한 비전과 용기를 담았습니다.</p>
+          <p class="muted small">개업: 2025-08-05 · 수비학/사주/천문 맥락 반영</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="channels" class="section">
+      <div class="container">
+        <h2>Channels</h2>
+        <p class="muted">오픈 후 채널 링크로 교체하세요.</p>
+        <div class="links">
+          <a class="btn outline" href="#" title="YouTube 채널 (추가 예정)">YouTube</a>
+          <a class="btn outline" href="#" title="Instagram (추가 예정)">Instagram</a>
+          <a class="btn outline" href="#" title="치지직 (추가 예정)">Chzzk</a>
+          <a class="btn outline" href="#" title="X/Twitter (추가 예정)">X</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section alt">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>문의는 메일로 부탁드립니다.</p>
+        <p><a class="btn" href="mailto:hello@thegolsy.com">hello@thegolsy.com</a></p>
+        <p class="muted small">메일 주소가 다르면 <code>index.html</code>에서 변경하세요.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 THE GOLSY · GOLDENSYNAP</p>
+      <p class="biz-info">
+        상호: 골든시냅(GOLDENSYNAP) | 대표: [대표자명] | 사업자등록번호: [123-45-67890]<br>
+        통신판매업 신고번호: [제2025-서울강남-00001호] | 주소: [주소 입력 예정]
+      </p>
+      <p class="muted tiny">※ 위 정보는 샘플입니다. 실제 정보로 교체하세요.</p>
+    </div>
+  </footer>
+
+  <!-- Roadmap Modal -->
+  <dialog id="roadmapModal">
+    <form method="dialog" class="modal-card">
+      <header>
+        <h3>THE GOLSY Roadmap</h3>
+        <button value="close" aria-label="close">×</button>
+      </header>
+      <section class="modal-body">
+        <ol class="roadmap">
+          <li><strong>1단계 · Golsy Store</strong><br>네이버 스마트스토어, 쿠팡 등 전자상거래</li>
+          <li><strong>2단계 · Golsy Studio</strong><br>유튜브·치지직 멀티채널, 글로벌 타겟 미디어</li>
+          <li><strong>3단계 · Virtual Idol/Animation</strong><br>AI 5인조 캐릭터, 애니·광고·굿즈 연계</li>
+          <li><strong>4단계 · Meta Golsy</strong><br>메타버스/블록체인, XRPL 기반 코인 구상</li>
+        </ol>
+      </section>
+      <footer>
+        <button class="btn" value="close">닫기</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
