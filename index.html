@@ -3,95 +3,176 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>THE GOLSY — GOLDENSYNAP</title>
-  <meta name="description" content="GOLDENSYNAP(골든시냅) · THE GOLSY — 모든 정보를 가치있게 연결합니다.">
+  <title>THE GOLSY</title>
+  <meta name="description" content="THE GOLSY — Connecting Information, Creating Value.">
   <link rel="icon" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/icon-180.png">
   <link rel="manifest" href="site.webmanifest">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <!-- Splash -->
+  <div class="splash" role="button" aria-label="Enter THE GOLSY">
+    <div style="text-align:center">
+      <h1>THE GOLSY</h1>
+      <div class="sub">Connecting Information, Creating Value</div>
+      <div class="tap">Click to Enter</div>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="container">
       <a class="brand" href="#top" aria-label="THE GOLSY Home">
-        <img src="assets/logo.png" alt="THE GOLSY Logo" class="logo" id="logoBtn">
+        <img src="assets/logo.png" alt="THE GOLSY Logo" class="logo">
         <span>THE GOLSY</span>
       </a>
       <nav class="nav">
         <a href="#store" class="nav-link">Golsy Store</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#channels" class="nav-link">Channels</a>
+        <a href="#studio" class="nav-link">Studio</a>
+        <a href="#ai" class="nav-link">AI Golsy</a>
+        <a href="#meta" class="nav-link">Meta Golsy</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
+    <!-- Hero -->
     <section class="hero">
       <div class="container center">
-        <h1>GOLDENSYNAP</h1>
-        <p class="lead">모든 정보를 가치있게 연결합니다.</p>
+        <h1>THE GOLSY</h1>
+        <p class="lead">Connecting Information, Creating Value</p>
         <div class="cta">
           <button class="btn" id="openRoadmap">로드맵 보기</button>
-          <a class="btn outline" href="#store">Golsy Store</a>
         </div>
       </div>
     </section>
 
-    <section id="store" class="section">
+    <!-- Menu: 5 cards in requested order -->
+    <section id="mainMenu" class="menu">
+      <div class="container">
+        <div class="grid5">
+          <div class="card">
+            <h3>Golsy Store</h3>
+            <p>공식 온라인 스토어</p>
+            <a class="btn outline" href="https://smartstore.naver.com/golsy" target="_blank" rel="noopener">바로가기</a>
+          </div>
+          <div class="card">
+            <h3>Studio</h3>
+            <p>YouTube · Twitch (Coming Soon)</p>
+            <a class="btn outline disabled" href="#" aria-disabled="true">채널 준비 중</a>
+          </div>
+          <div class="card">
+            <h3>AI Golsy</h3>
+            <p>가상 아이돌 · 보이스/비주얼 AI</p>
+            <a class="btn outline disabled" href="#" aria-disabled="true">콘텐츠 준비 중</a>
+          </div>
+          <div class="card">
+            <h3>Meta Golsy</h3>
+            <p>Metaverse · Game · App Service</p>
+            <a class="btn outline disabled" href="#" aria-disabled="true">프로젝트 준비 중</a>
+          </div>
+          <div class="card">
+            <h3>Contact</h3>
+            <p>이메일 · SNS</p>
+            <a class="btn outline" href="#contact">연락하기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Store -->
+    <section id="store" class="section alt">
       <div class="container">
         <h2>Golsy Store</h2>
-        <p class="muted">전자상거래 채널로 연결합니다. 실제 링크로 교체하세요.</p>
+        <p class="muted">Golsy Store로 이동하기</p>
         <div class="links">
-          <a class="btn outline" href="https://smartstore.naver.com/your-store-slug" target="_blank" rel="noopener">네이버 스마트스토어</a>
-          <a class="btn outline disabled" href="#" aria-disabled="true" title="오픈 후 연결 예정">쿠팡 스토어 (오픈 예정)</a>
+          <a class="btn outline" href="https://smartstore.naver.com/golsy" target="_blank" rel="noopener">네이버 스마트스토어</a>
+          <a class="btn outline disabled" href="#" aria-disabled="true">쿠팡 (오픈 예정)</a>
         </div>
-        <p class="tiny muted">※ 링크는 오픈 완료 후 <code>index.html</code>에서 교체</p>
       </div>
     </section>
 
+    <!-- Studio -->
+    <section id="studio" class="section">
+      <div class="container">
+        <h2>Golsy Studio</h2>
+        <p class="muted">Golsy Studio Channels (Coming Soon)</p>
+        <div class="links">
+          <a class="btn outline disabled" href="#" aria-disabled="true">YouTube (Coming Soon)</a>
+          <a class="btn outline disabled" href="#" aria-disabled="true">Twitch (Coming Soon)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Golsy -->
+    <section id="ai" class="section alt">
+      <div class="container">
+        <h2>AI Golsy</h2>
+        <p class="muted">Virtual Idol & Animation — 보이스/비주얼 AI로 확장 예정</p>
+        <div class="links">
+          <a class="btn outline disabled" href="#" aria-disabled="true">Showcase (Coming Soon)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meta Golsy -->
+    <section id="meta" class="section">
+      <div class="container">
+        <h2>Meta Golsy</h2>
+        <p class="muted">Metaverse · Game · App Service (Future Vision)</p>
+        <div class="links">
+          <a class="btn outline disabled" href="#" aria-disabled="true">Prototype (Coming Soon)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
     <section id="about" class="section alt">
       <div class="container grid-2">
         <div>
-          <h2>About GOLDENSYNAP</h2>
-          <p>회사명 <strong>GOLDENSYNAP(골든시냅)</strong>, 대표 브랜드 <strong>THE GOLSY</strong>.</p>
-          <p>설립일: <strong>2025-08-05</strong> · 개인사업자로 시작하여 3년 내 법인 전환 목표.<br>
-          철학: <em>“모든 정보를 가치있게 연결하자.”</em></p>
+          <h2>About THE GOLSY</h2>
+          <p>
+            <strong>THE GOLSY</strong>는 <strong>골든시냅(GOLDENSYNAP)</strong>의 대표 브랜드로,
+            “모든 정보를 좀 더 가치 있게 바꾸자”는 철학을 바탕으로 탄생했습니다.
+          </p>
+          <p>
+            이름 <strong>Golsy</strong>는 지성과 매력을 동시에 지닌 사람을 뜻하며,
+            창의적이고 혁신적인 디지털 노마드 문화를 상징합니다.
+          </p>
           <ul class="checks">
-            <li>1단계: Golsy Store — 전자상거래(네이버, 쿠팡 등)</li>
-            <li>2단계: Golsy Studio — 유튜브·치지직 등 글로벌 미디어</li>
-            <li>3단계: 가상 아이돌·애니메이션·굿즈 연계</li>
-            <li>4단계: Meta Golsy(메타버스/블록체인)</li>
+            <li>Start — Golsy Store</li>
+            <li>Grow — Golsy Studio</li>
+            <li>Innovate — AI Golsy (Virtual Idol & Animation)</li>
+            <li>Future Vision — Meta Golsy (Metaverse · Game · App Service)</li>
           </ul>
         </div>
         <div class="card">
-          <h3>로고 의미</h3>
-          <p>사자의 심장과 사자자리의 기운에서 영감을 받은 상징으로,
-          다가올 물병자리 시대에 대비한 비전과 용기를 담았습니다.</p>
-          <p class="muted small">개업: 2025-08-05 · 수비학/사주/천문 맥락 반영</p>
+          <h3>THE STORY OF LOGO</h3>
+          <p>골든시냅은 8월에 태어난 기업으로, 사자자리의 가장 밝은 별 <em>레귤러스(Regulus)</em>에서 영감을 얻었습니다. 이 별은 ‘사자의 심장’이라 불리며 강인한 리더십과 용기의 상징입니다.</p>
+          <p>우리의 로고는 레귤러스처럼 빛나는 존재가 되겠다는 다짐을 담아, 사자의 심장을 형상화하여 탄생했습니다.</p>
         </div>
       </div>
     </section>
 
-    <section id="channels" class="section">
-      <div class="container">
-        <h2>Channels</h2>
-        <p class="muted">오픈 후 채널 링크로 교체하세요.</p>
-        <div class="links">
-          <a class="btn outline" href="#" title="YouTube 채널 (추가 예정)">YouTube</a>
-          <a class="btn outline" href="#" title="Instagram (추가 예정)">Instagram</a>
-          <a class="btn outline" href="#" title="치지직 (추가 예정)">Chzzk</a>
-          <a class="btn outline" href="#" title="X/Twitter (추가 예정)">X</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section alt">
+    <!-- Contact -->
+    <section id="contact" class="section">
       <div class="container">
         <h2>Contact</h2>
-        <p>문의는 메일로 부탁드립니다.</p>
-        <p><a class="btn" href="mailto:hello@thegolsy.com">hello@thegolsy.com</a></p>
-        <p class="muted small">메일 주소가 다르면 <code>index.html</code>에서 변경하세요.</p>
+        <p><a class="btn" href="mailto:thegolsy@gmail.com">thegolsy@gmail.com</a></p>
+        <p class="muted">Connect with Golsy on Social Platforms</p>
+        <div class="links">
+          <a class="btn outline disabled" href="#" aria-disabled="true">Twitter (X · Coming Soon)</a>
+          <a class="btn outline disabled" href="#" aria-disabled="true">Instagram (Coming Soon)</a>
+          <a class="btn outline disabled" href="#" aria-disabled="true">LINE (Coming Soon)</a>
+          <a class="btn outline disabled" href="#" aria-disabled="true">KakaoTalk (Coming Soon)</a>
+          <a class="btn outline disabled" href="#" aria-disabled="true">TikTok (Coming Soon)</a>
+          <a class="btn outline disabled" href="#" aria-disabled="true">Facebook (Coming Soon)</a>
+        </div>
       </div>
     </section>
   </main>
@@ -103,7 +184,6 @@
         상호: 골든시냅(GOLDENSYNAP) | 대표: [대표자명] | 사업자등록번호: [123-45-67890]<br>
         통신판매업 신고번호: [제2025-서울강남-00001호] | 주소: [주소 입력 예정]
       </p>
-      <p class="muted tiny">※ 위 정보는 샘플입니다. 실제 정보로 교체하세요.</p>
     </div>
   </footer>
 
@@ -116,10 +196,10 @@
       </header>
       <section class="modal-body">
         <ol class="roadmap">
-          <li><strong>1단계 · Golsy Store</strong><br>네이버 스마트스토어, 쿠팡 등 전자상거래</li>
-          <li><strong>2단계 · Golsy Studio</strong><br>유튜브·치지직 멀티채널, 글로벌 타겟 미디어</li>
-          <li><strong>3단계 · Virtual Idol/Animation</strong><br>AI 5인조 캐릭터, 애니·광고·굿즈 연계</li>
-          <li><strong>4단계 · Meta Golsy</strong><br>메타버스/블록체인, XRPL 기반 코인 구상</li>
+          <li><strong>Start — Golsy Store</strong></li>
+          <li><strong>Grow — Golsy Studio</strong></li>
+          <li><strong>Innovate — AI Golsy</strong></li>
+          <li><strong>Future Vision — Meta Golsy</strong></li>
         </ol>
       </section>
       <footer>

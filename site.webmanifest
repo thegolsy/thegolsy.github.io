@@ -1,6 +1,6 @@
 {
-  "name": "THE GOLSY — GOLDENSYNAP",
-  "short_name": "THE GOLSY",
+  "name": "THE GOLSY",
+  "short_name": "Golsy",
   "icons": [
     {
       "src": "assets/icon-192.png",
@@ -13,8 +13,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
-  "background_color": "#0b1320",
-  "theme_color": "#e7d08a",
-  "display": "standalone"
+  "theme_color": "#0a0e1e",
+  "background_color": "#0a0e1e",
+  "display": "standalone",
+  "start_url": "/"
 }
