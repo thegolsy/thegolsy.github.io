@@ -102,3 +102,5 @@ dialog{border:none;border-radius:18px;padding:0;background:var(--navy-2);color:v
 .modal-card section{padding:16px 18px}
 .modal-card footer{padding:14px 18px;border-top:1px solid rgba(210,180,64,.18)}
 .roadmap{margin:0; padding-left:18px}
+
+.splash .brand{width:140px;height:auto;}
