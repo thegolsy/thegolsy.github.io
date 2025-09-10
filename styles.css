@@ -104,3 +104,15 @@ dialog{border:none;border-radius:18px;padding:0;background:var(--navy-2);color:v
 .roadmap{margin:0; padding-left:18px}
 
 .splash .brand{width:140px;height:auto;}
+
+/* --- Studio brand buttons --- */
+.btn-group{display:flex;gap:10px;flex-wrap:wrap}
+.btn img.icon{width:18px;height:18px;margin-right:6px;vertical-align:middle}
+
+/* YouTube brand */
+.btn.youtube{background:#FF0000;border:1px solid #CC0000;color:#fff}
+.btn.youtube:hover{background:#CC0000;border-color:#990000}
+
+/* Twitch brand */
+.btn.twitch{background:#9146FF;border:1px solid #772CE8;color:#fff}
+.btn.twitch:hover{background:#772CE8;border-color:#5a1dbd}
