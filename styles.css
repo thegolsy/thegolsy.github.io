@@ -116,3 +116,71 @@ dialog{border:none;border-radius:18px;padding:0;background:var(--navy-2);color:v
 /* Twitch brand */
 .btn.twitch{background:#9146FF;border:1px solid #772CE8;color:#fff}
 .btn.twitch:hover{background:#772CE8;border-color:#5a1dbd}
+
+/* --- 공통 안정화 --- */
+* { box-sizing: border-box; }
+img, svg { max-width: 100%; height: auto; display: block; }
+.container { width: min(1100px, 100%); margin: 0 auto; padding: 0 16px; }
+
+/* 헤더 정렬 & 줄바꿈 허용 */
+.site-header .container { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.brand { display:flex; align-items:center; gap:8px; min-width:0; }
+.brand .logo { width: 28px; height: 28px; object-fit: contain; }
+
+/* 네비게이션과 언어 스위치 */
+.nav { display:flex; gap: 12px; flex-wrap: wrap; }
+.lang-switch { margin-left: auto; display:flex; gap:6px; align-items:center; }
+.lang-btn {
+  display:flex; align-items:center; gap:6px;
+  padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06); color:#fff; cursor:pointer;
+  font:600 12px/1 "Plus Jakarta Sans","Noto Sans KR",system-ui,"Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji";
+}
+.lang-btn[aria-pressed="true"]{ background:#fff; color:#111; }
+.lang-btn .e { font-size:16px; line-height:1; transform: translateY(1px); } /* 이모지 깔끔 보정 */
+
+/* 히어로 타이포/여백을 뷰포트에 맞춰 자동 조절 */
+.hero { padding: clamp(48px, 12vw, 120px) 0; }
+.hero h1 { font-family:"Cinzel",serif; font-weight:700; font-size: clamp(28px, 6vw, 56px); }
+.hero .lead { font-size: clamp(14px, 2.8vw, 20px); }
+
+/* 카드 그리드(데스크탑 5 → 태블릿 2~3 → 모바일 1) */
+.grid5 { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:16px; }
+@media (max-width: 1200px){ .grid5 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) { .grid5 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .grid5 { grid-template-columns: 1fr; } }
+
+.card { padding: 20px; border-radius: 16px; background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); }
+
+/* 버튼이 너무 작게 보일 때 대비 */
+.btn { padding: 10px 14px; border-radius: 10px; }
+
+/* 섹션 제목/본문 크기 자동 조절 */
+.section h2 { font-size: clamp(20px, 4.8vw, 28px); }
+.section .muted { font-size: clamp(13px, 3.4vw, 16px); }
+
+/* 푸터 글자 줄바꿈 개선 */
+.site-footer .biz-info { word-break: keep-all; }
+
+/* --- 모바일 전용 추가 미세조정 --- */
+@media (max-width: 720px){
+  /* 네비가 길면 한 줄에 다 넣지 말고 자동 줄바꿈 */
+  .nav { order: 3; width: 100%; }
+  .lang-switch { order: 2; margin-left: 0; }
+  .brand { order: 1; }
+
+  /* 언어 버튼: 텍스트 숨기고 국기만 노출(공간 확보) */
+  .lang-text { display:none; }
+  .lang-btn { padding: 6px 8px; }
+  .lang-btn .e { font-size:18px; transform:none; }
+
+  /* 카드 안 버튼 가독성 */
+  .btn-group .btn { width: 100%; justify-content: center; }
+}
+
+/* 스플래시가 내용 가리는 문제 예방(닫힐 때 완전 숨김) */
+.splash { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center;
+  background: radial-gradient(85% 85% at 50% 50%, #0b1020, #05070e 70%, #02040a); color:#fff; cursor:pointer;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+.splash.off { opacity: 0; visibility: hidden; pointer-events: none; }
