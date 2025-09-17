@@ -12,18 +12,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+
   <style>
-    /* --- 추가 스타일: SNS 아이콘 그리드 + 토스트 --- */
+    /* --- SNS 아이콘 그리드 + 토스트 --- */
     .social-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:12px}
     @media (max-width:1024px){.social-grid{grid-template-columns:repeat(4,1fr)}}
     @media (max-width:720px){.social-grid{grid-template-columns:repeat(3,1fr)}}
     @media (max-width:480px){.social-grid{grid-template-columns:repeat(2,1fr)}}
-
     .social{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;text-decoration:none;color:#fff;
             border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);transition:transform .12s ease, box-shadow .12s ease}
     .social:hover{transform:translateY(-1px);box-shadow:0 6px 12px rgba(0,0,0,.25)}
     .icon-lg{width:18px;height:18px}
-
     /* Brand backgrounds */
     .social.kakaotalk{background:#FEE500;color:#111}
     .social.x{background:#111}
@@ -35,26 +34,27 @@
     .social.bluesky{background:#0285FF}
     .social.line{background:#06C755}
     .social.threads{background:#000}
-
     /* 토스트 */
     .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#222;color:#fff;
            padding:10px 14px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .25s}
     .toast.show{opacity:1}
 
-    /* ======== 우측 상단 다국어 스위치 ======== */
+    /* ======== 헤더 & 언어 스위치 ======== */
     .site-header .container{display:flex;align-items:center;gap:16px}
     .nav{display:flex;gap:14px;margin-left:auto}
     .lang-switch{display:flex;gap:6px;align-items:center;margin-left:12px}
-    .lang-btn{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;font:600 12px/1 "Plus Jakarta Sans","Noto Sans KR",system-ui;}
+    .lang-btn{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);
+              background:rgba(255,255,255,.06);color:#fff;cursor:pointer;font:600 12px/1 "Plus Jakarta Sans","Noto Sans KR",system-ui;}
     .lang-btn[aria-pressed="true"]{background:#fff;color:#111}
-    .flag{width:16px;height:16px;border-radius:3px;display:inline-block;overflow:hidden}
-    .flag i{display:block;width:100%;height:100%;background-size:cover}
-    /* 간단한 CSS 국기(이미지 불필요) */
-    .flag.kr{background:linear-gradient(#fff,#fff)}
-    .flag.us{background:linear-gradient(#b22234 10%,#fff 10% 20%,#b22234 20% 30%,#fff 30% 40%,#b22234 40% 50%,#fff 50% 60%,#b22234 60% 70%,#fff 70% 80%,#b22234 80% 90%,#fff 90% 100%)}
-    .flag.jp{background:radial-gradient(circle at 50% 50%, #bc002d 36%, transparent 37%), #fff}
-    .flag.cn{background:linear-gradient(#de2910,#de2910)}
+    .flag-svg{width:16px;height:16px;display:inline-block}
     @media (max-width:720px){ .lang-text{display:none} }
+
+    /* ======== 버튼 브랜드 컬러 ======== */
+    .btn.youtube{background:#FF0000;border:1px solid #CC0000;color:#fff}
+    .btn.youtube:hover{background:#CC0000;border-color:#990000}
+    .btn.twitch{background:#9146FF;border:1px solid #772CE8;color:#fff}
+    .btn.twitch:hover{background:#772CE8;border-color:#5a1dbd}
+    .btn-group{display:flex;gap:10px;flex-wrap:wrap}
   </style>
 </head>
 <body>
@@ -71,7 +71,8 @@
   <header class="site-header">
     <div class="container">
       <a class="brand" href="#top" aria-label="THE GOLSY Home">
-        <img src="/logo.png" alt="THE GOLSY Logo" class="logo">
+        <!-- 로고는 index.html과 같은 폴더의 logo.png -->
+        <img src="logo.png" alt="THE GOLSY Logo" class="logo">
         <span>THE GOLSY</span>
       </a>
       <nav class="nav">
@@ -81,11 +82,50 @@
         <a href="#meta" class="nav-link" data-i18n="nav_meta">Meta Golsy</a>
         <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
       </nav>
+
+      <!-- 언어 스위치 (SVG 국기) -->
       <div class="lang-switch" role="group" aria-label="Language switcher">
-        <button class="lang-btn" data-lang="ko" aria-pressed="true"><span class="flag kr"></span><span class="lang-text">한국어</span></button>
-        <button class="lang-btn" data-lang="en" aria-pressed="false"><span class="flag us"></span><span class="lang-text">English</span></button>
-        <button class="lang-btn" data-lang="zh" aria-pressed="false"><span class="flag cn"></span><span class="lang-text">中文</span></button>
-        <button class="lang-btn" data-lang="ja" aria-pressed="false"><span class="flag jp"></span><span class="lang-text">日本語</span></button>
+        <button class="lang-btn" data-lang="ko" aria-pressed="true" title="한국어">
+          <svg class="flag-svg" viewBox="0 0 60 40" aria-hidden="true">
+            <rect width="60" height="40" fill="#fff"/>
+            <circle cx="30" cy="20" r="9" fill="#0047A0"/>
+            <path d="M30 11a9 9 0 0 1 0 18a9 9 0 0 0 0-18z" fill="#C60C30"/>
+            <!-- 간단화된 괘 -->
+            <g stroke="#000" stroke-width="2">
+              <line x1="8" y1="8" x2="18" y2="8"/><line x1="8" y1="12" x2="18" y2="12"/>
+              <line x1="42" y1="8" x2="52" y2="8"/><line x1="42" y1="12" x2="52" y2="12"/>
+              <line x1="8" y1="28" x2="18" y2="28"/><line x1="8" y1="32" x2="18" y2="32"/>
+              <line x1="42" y1="28" x2="52" y2="28"/><line x1="42" y1="32" x2="52" y2="32"/>
+            </g>
+          </svg>
+          <span class="lang-text">한국어</span>
+        </button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false" title="English">
+          <svg class="flag-svg" viewBox="0 0 60 40" aria-hidden="true">
+            <rect width="60" height="40" fill="#b22234"/>
+            <g fill="#fff">
+              <rect y="3" width="60" height="3"/><rect y="9" width="60" height="3"/>
+              <rect y="15" width="60" height="3"/><rect y="21" width="60" height="3"/>
+              <rect y="27" width="60" height="3"/><rect y="33" width="60" height="3"/>
+            </g>
+            <rect width="24" height="17" fill="#3c3b6e"/>
+          </svg>
+          <span class="lang-text">English</span>
+        </button>
+        <button class="lang-btn" data-lang="zh" aria-pressed="false" title="中文">
+          <svg class="flag-svg" viewBox="0 0 60 40" aria-hidden="true">
+            <rect width="60" height="40" fill="#de2910"/>
+            <polygon points="8,8 10,14 4,10 12,10 6,14" fill="#ffde00"/>
+          </svg>
+          <span class="lang-text">中文</span>
+        </button>
+        <button class="lang-btn" data-lang="ja" aria-pressed="false" title="日本語">
+          <svg class="flag-svg" viewBox="0 0 60 40" aria-hidden="true">
+            <rect width="60" height="40" fill="#fff"/>
+            <circle cx="30" cy="20" r="9" fill="#bc002d"/>
+          </svg>
+          <span class="lang-text">日本語</span>
+        </button>
       </div>
     </div>
   </header>
@@ -111,30 +151,30 @@
             <p data-i18n="menu_store_desc">네이버 스마트 스토어</p>
             <a class="btn outline" href="https://smartstore.naver.com/golsy" target="_blank" rel="noopener" data-i18n="go_now">바로가기</a>
           </div>
-        <div class="card">
-  <h3 data-i18n="menu_studio">스튜디오</h3>
-  <p>YouTube · Twitch</p>
-  <div class="btn-group">
-  <div class="dropdown">
-    <a href="#" class="btn youtube" id="ytBtnSec" aria-haspopup="true" aria-expanded="false">YouTube</a>
-    <div class="menu" role="menu" aria-labelledby="ytBtnSec">
-      <a role="menuitem" href="https://www.youtube.com/@thegolsy" target="_blank" rel="noopener">Channel 1 · 브랜드 채널</a>
-      <a role="menuitem" href="https://www.youtube.com/@서초동창무사" target="_blank" rel="noopener">Channel 2 · 게임방송(열혈강호)</a>
-    </div>
-  </div>
 
-  <a class="btn twitch" href="https://www.twitch.tv/thegolsy" target="_blank" rel="noopener">Twitch 채널</a>
-</div>
+          <div class="card">
+            <h3 data-i18n="menu_studio">스튜디오</h3>
+            <p>YouTube · Twitch</p>
+            <div class="btn-group">
+              <!-- YouTube: 모달 열기 -->
+              <a href="#" class="btn youtube open-yt">YouTube</a>
+              <!-- Twitch 그대로 -->
+              <a class="btn twitch" href="https://www.twitch.tv/thegolsy" target="_blank" rel="noopener" data-i18n="twitch">Twitch 채널</a>
+            </div>
+          </div>
+
           <div class="card">
             <h3 data-i18n="menu_ai">AI(에이아이)</h3>
             <p data-i18n="menu_ai_desc">AI 오디오북, AI 음악, AI 캐릭터, AI 교육, 애니메이션 등</p>
             <a class="btn outline disabled" href="#" aria-disabled="true" data-i18n="coming_content">콘텐츠 준비 중</a>
           </div>
+
           <div class="card">
             <h3 data-i18n="menu_meta">메타</h3>
             <p>메타버스,게임,앱 서비스</p>
             <a class="btn outline disabled" href="#" aria-disabled="true" data-i18n="coming_project">프로젝트 준비 중</a>
           </div>
+
           <div class="card">
             <h3 data-i18n="menu_contact">Contact</h3>
             <p data-i18n="menu_contact_desc">이메일 · SNS</p>
@@ -157,30 +197,21 @@
     </section>
 
     <!-- Studio -->
-  <section id="studio" class="section">
-  <div class="container">
-    <h2 data-i18n="studio_title">Studio</h2>
-    <p class="muted" data-i18n="studio_desc">Golsy Studio Channels</p>
-    <div class="btn-group">
-      <!-- YouTube 1: @thegolsy -->
-      <a class="btn youtube" href="https://www.youtube.com/@thegolsy" target="_blank" rel="noopener">
-        YouTube · @thegolsy
-      </a>
-      <!-- YouTube 2: @서초동창무사 -->
-      <a class="btn youtube" href="https://www.youtube.com/@서초동창무사" target="_blank" rel="noopener">
-        게임방송 서초동 창무사 (열혈강호)
-      </a>
-      <!-- Twitch 유지 -->
-      <a class="btn twitch" href="https://www.twitch.tv/thegolsy" target="_blank" rel="noopener">
-        Twitch 채널
-      </a>
-    </div>
-  </div>
-</section>
+    <section id="studio" class="section">
+      <div class="container">
+        <h2 data-i18n="studio_title">Studio</h2>
+        <p class="muted" data-i18n="studio_desc">Golsy Studio Channels</p>
+        <div class="btn-group">
+          <a href="#" class="btn youtube open-yt">YouTube</a>
+          <a class="btn twitch" href="https://www.twitch.tv/thegolsy" target="_blank" rel="noopener" data-i18n="twitch">Twitch 채널</a>
+        </div>
+      </div>
+    </section>
+
     <!-- AI -->
     <section id="ai" class="section alt">
       <div class="container">
-        <h2>AI </h2>
+        <h2>AI</h2>
         <p class="muted" data-i18n="ai_desc">AI를 활용한 컨텐츠(오디오북,음악,교육,애니메이션 등)— </p>
         <div class="links">
           <a class="btn outline disabled" href="#" aria-disabled="true" data-i18n="showcase_coming">Showcase (Coming Soon)</a>
@@ -191,7 +222,7 @@
     <!-- Meta -->
     <section id="meta" class="section">
       <div class="container">
-        <h2>Meta </h2>
+        <h2>Meta</h2>
         <p class="muted">메타버스,게임,앱 서비스 등(Future Vision)</p>
         <div class="links">
           <a class="btn outline disabled" href="#" aria-disabled="true" data-i18n="prototype_coming">Prototype (Coming Soon)</a>
@@ -237,18 +268,47 @@
             <svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="11" rx="9" ry="6.8" fill="#3c1e1e"/></svg>
             <span>KakaoTalk</span>
           </a>
-          <a class="social x" href="https://x.com/thegolsy" target="_blank" rel="noopener"><svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M3 3h5.7l4.2 5.6L18.3 3H21l-7.2 9.3L21 21h-5.7l-4.5-6L6 21H3l7.5-9.8L3 3z"/></svg><span>X (Twitter)</span></a>
-          <a class="social instagram" href="https://www.instagram.com/goldensynap" target="_blank" rel="noopener"><svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm0 2.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5z"/><circle cx="18.5" cy="5.5" r="1.5" fill="#fff"/></svg><span>Instagram</span></a>
-          <a class="social tiktok" href="https://www.tiktok.com/@thegolsy" target="_blank" rel="noopener"><svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M14 3h3a5 5 0 004 4v3a9 9 0 01-7-3v7a6 6 0 11-6-6c.7 0 1.3.1 2 .3v3A3 3 0 108 16a3 3 0 003-3V3z"/></svg><span>TikTok</span></a>
-          <a class="social pinterest" href="https://www.pinterest.com/thegolsy" target="_blank" rel="noopener"><svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#E60023"/><path fill="#fff" d="M12.2 6.5c2.2 0 3.8 1.6 3.8 3.8 0 2.7-1.5 4.8-3.8 4.8-.8 0-1.5-.4-1.8-1l-.5 1.8-.7 2.5h-1l.6-2.7.8-3.1c-.3-.5-.4-1-.4-1.5 0-2 1.3-3.6 3-3.6z"/></svg><span>Pinterest</span></a>
-          <a class="social tumblr" href="https://thegolsy.tumblr.com" target="_blank" rel="noopener"><svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M10 2h4v4h4v3h-4v6c0 1 .7 1.5 1.7 1.5.9 0 1.6-.3 2.3-.7V20a6.8 6.8 0 01-3.7 1c-2.9 0-4.3-1.7-4.3-4.1V9H8V6.6C9.3 6.2 10 5.2 10 4V2z"/></svg><span>Tumblr</span></a>
-          <a class="social mastodon" href="https://mastodon.social/@golsy" target="_blank" rel="me noopener"><svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2c4.8 0 8 1.6 8 6.1v5.3c0 3.6-2.2 4.8-5.5 5.4l-.5 3.2h-4L9.6 19C6.4 18.4 4 17 4 13.4V8.1C4 3.6 7.2 2 12 2zm-3.5 6v5.7h2V10c0-.9.4-1.3 1.2-1.3.9 0 1.3.4 1.3 1.3v3.7h2V10c0-2.1-1.1-3.2-3.1-3.2-1 0-1.7.4-2.2 1V8h-1.2z"/></svg><span>Mastodon</span></a>
-          <a class="social bluesky" href="https://bsky.app/profile/golsy" target="_blank" rel="noopener"><svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 9c2.6-4.5 6-8 8-8-1 3.5-2 6.6-1 9 1 2.2 3 3 3 5 0 3-3 3-5 1.5-1.7-1.2-3-2.7-5-4.5-2 1.8-3.3 3.3-5 4.5C5 18 2 18 2 15c0-2 2-2.8 3-5 1-2.4 0-5.5-1-9 2 0 5.4 3.5 8 8z"/></svg><span>Bluesky</span></a>
-          <a class="social line" href="https://line.me/ti/p/~thegolsy" target="_blank" rel="noopener"><svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M4 4h16a4 4 0 014 4v5c0 4-3.6 7-8.5 7H12l-3.5 3v-3H8A8 8 0 014 13V8a4 4 0 014-4z"/></svg><span>LINE</span></a>
-          <a class="social threads" href="https://www.threads.net/@thegolsy" target="_blank" rel="noopener"><svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 100 20 10 10 0 000-20zm3 8.8c-1-.8-2.3-1.1-3.6-1.1H9.8v2h1.4c.9 0 1.6.2 2 .6.4.3.6.8.6 1.5 0 1.3-1 2.2-2.6 2.2-1 0-1.9-.4-2.7-1.1l-1 1.6c1 .8 2.3 1.3 3.8 1.3 2.7 0 4.7-1.6 4.7-4.1 0-1-.2-1.8-.6-2.4z"/></svg><span>Threads</span></a>
+          <a class="social x" href="https://x.com/thegolsy" target="_blank" rel="noopener">
+            <svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M3 3h5.7l4.2 5.6L18.3 3H21l-7.2 9.3L21 21h-5.7l-4.5-6L6 21H3l7.5-9.8L3 3z"/></svg>
+            <span>X (Twitter)</span>
+          </a>
+          <a class="social instagram" href="https://www.instagram.com/goldensynap" target="_blank" rel="noopener">
+            <svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm0 2.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5z"/><circle cx="18.5" cy="5.5" r="1.5" fill="#fff"/></svg>
+            <span>Instagram</span>
+          </a>
+          <a class="social tiktok" href="https://www.tiktok.com/@thegolsy" target="_blank" rel="noopener">
+            <svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M14 3h3a5 5 0 004 4v3a9 9 0 01-7-3v7a6 6 0 11-6-6c.7 0 1.3.1 2 .3v3A3 3 0 108 16a3 3 0 003-3V3z"/></svg>
+            <span>TikTok</span>
+          </a>
+          <a class="social pinterest" href="https://www.pinterest.com/thegolsy" target="_blank" rel="noopener">
+            <svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#E60023"/><path fill="#fff" d="M12.2 6.5c2.2 0 3.8 1.6 3.8 3.8 0 2.7-1.5 4.8-3.8 4.8-.8 0-1.5-.4-1.8-1l-.5 1.8-.7 2.5h-1l.6-2.7.8-3.1c-.3-.5-.4-1-.4-1.5 0-2 1.3-3.6 3-3.6z"/></svg>
+            <span>Pinterest</span>
+          </a>
+          <a class="social tumblr" href="https://thegolsy.tumblr.com" target="_blank" rel="noopener">
+            <svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M10 2h4v4h4v3h-4v6c0 1 .7 1.5 1.7 1.5.9 0 1.6-.3 2.3-.7V20a6.8 6.8 0 01-3.7 1c-2.9 0-4.3-1.7-4.3-4.1V9H8V6.6C9.3 6.2 10 5.2 10 4V2z"/></svg>
+            <span>Tumblr</span>
+          </a>
+          <a class="social mastodon" href="https://mastodon.social/@golsy" target="_blank" rel="me noopener">
+            <svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2c4.8 0 8 1.6 8 6.1v5.3c0 3.6-2.2 4.8-5.5 5.4l-.5 3.2h-4L9.6 19C6.4 18.4 4 17 4 13.4V8.1C4 3.6 7.2 2 12 2zm-3.5 6v5.7h2V10c0-.9.4-1.3 1.2-1.3.9 0 1.3.4 1.3 1.3v3.7h2V10c0-2.1-1.1-3.2-3.1-3.2-1 0-1.7.4-2.2 1V8h-1.2z"/></svg>
+            <span>Mastodon</span>
+          </a>
+          <a class="social bluesky" href="https://bsky.app/profile/golsy" target="_blank" rel="noopener">
+            <svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 9c2.6-4.5 6-8 8-8-1 3.5-2 6.6-1 9 1 2.2 3 3 3 5 0 3-3 3-5 1.5-1.7-1.2-3-2.7-5-4.5-2 1.8-3.3 3.3-5 4.5C5 18 2 18 2 15c0-2 2-2.8 3-5 1-2.4 0-5.5-1-9 2 0 5.4 3.5 8 8z"/></svg>
+            <span>Bluesky</span>
+          </a>
+          <a class="social line" href="https://line.me/ti/p/~thegolsy" target="_blank" rel="noopener">
+            <svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M4 4h16a4 4 0 014 4v5c0 4-3.6 7-8.5 7H12l-3.5 3v-3H8A8 8 0 014 13V8a4 4 0 014-4z"/></svg>
+            <span>LINE</span>
+          </a>
+          <a class="social threads" href="https://www.threads.net/@thegolsy" target="_blank" rel="noopener">
+            <svg class="icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 100 20 10 10 0 000-20zm3 8.8c-1-.8-2.3-1.1-3.6-1.1H9.8v2h1.4c.9 0 1.6.2 2 .6.4.3.6.8.6 1.5 0 1.3-1 2.2-2.6 2.2-1 0-1.9-.4-2.7-1.1l-1 1.6c1 .8 2.3 1.3 3.8 1.3 2.7 0 4.7-1.6 4.7-4.1 0-1-.2-1.8-.6-2.4z"/></svg>
+            <span>Threads</span>
+          </a>
         </div>
 
-        <div id="copyToast" class="toast" role="status" aria-live="polite" aria-hidden="true" data-i18n="toast_kakao">카카오톡 ID가 복사되었습니다: thegolsy</div>
+        <div id="copyToast" class="toast" role="status" aria-live="polite" aria-hidden="true" data-i18n="toast_kakao">
+          카카오톡 ID가 복사되었습니다: thegolsy
+        </div>
       </div>
     </section>
   </main>
@@ -284,6 +344,25 @@
     </form>
   </dialog>
 
+  <!-- YouTube 채널 선택 모달 -->
+  <dialog id="ytModal">
+    <form method="dialog" class="modal-card">
+      <header>
+        <h3 data-i18n="yt_modal_title">YouTube 채널 선택</h3>
+        <button value="close" aria-label="close">×</button>
+      </header>
+      <section class="modal-body">
+        <div class="links" style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn youtube" href="https://www.youtube.com/@thegolsy" target="_blank" rel="noopener" data-i18n="yt_ch1">Channel 1 · 브랜드 채널</a>
+          <a class="btn youtube" href="https://www.youtube.com/@서초동창무사" target="_blank" rel="noopener" data-i18n="yt_ch2">Channel 2 · 게임방송(열혈강호)</a>
+        </div>
+      </section>
+      <footer>
+        <button class="btn" value="close" data-i18n="close">닫기</button>
+      </footer>
+    </form>
+  </dialog>
+
   <script>
     // --- KakaoTalk ID 복사 & 토스트 표시 ---
     document.addEventListener('click', (e) => {
@@ -302,10 +381,8 @@
         }
       }).catch(()=> alert('복사 실패: ' + val));
     });
-  </script>
 
-  <!-- === 4개 언어 스위치 스크립트 === -->
-  <script>
+    // === 4개 언어 스위치 ===
     (function(){
       const dict = {
         ko: {
@@ -329,7 +406,8 @@
           contact:'Contact', connect:'Connect with Golsy on Social Platforms', kakao_copy_title:'카카오톡 ID 복사', toast_kakao:'카카오톡 ID가 복사되었습니다: thegolsy',
           biz1:'상호: 골든시냅(GOLDENSYNAP) | 대표: [대표자명] | 사업자등록번호: [123-45-67890]',
           biz2:'통신판매업 신고번호: [제2025-서울강남-00001호] | 주소: [주소 입력 예정]',
-          roadmap_title:'THE GOLSY Roadmap', close:'닫기'
+          roadmap_title:'THE GOLSY Roadmap', close:'닫기',
+          yt_modal_title:'YouTube 채널 선택', yt_ch1:'Channel 1 · 브랜드 채널', yt_ch2:'Channel 2 · 게임방송(열혈강호)'
         },
         en: {
           brand:'THE GOLSY', tagline:'Connecting Information, Creating Value', tap:'Click to Enter',
@@ -352,7 +430,8 @@
           contact:'Contact', connect:'Connect with Golsy on Social Platforms', kakao_copy_title:'Copy KakaoTalk ID', toast_kakao:'KakaoTalk ID copied: thegolsy',
           biz1:'Business: GOLDENSYNAP | CEO: [Name] | Biz Reg. No.: [123-45-67890]',
           biz2:'Mail-Order License: [2025-Seoul seocho-2289ho] | Address: TBA',
-          roadmap_title:'THE GOLSY Roadmap', close:'Close'
+          roadmap_title:'THE GOLSY Roadmap', close:'Close',
+          yt_modal_title:'Choose YouTube Channel', yt_ch1:'Channel 1 · Brand Channel', yt_ch2:'Channel 2 · Gaming (Yulhyeol Gangho)'
         },
         zh: {
           brand:'THE GOLSY', tagline:'连接信息，创造价值', tap:'点击进入',
@@ -363,19 +442,20 @@
           menu_ai:'AI', menu_ai_desc:'虚拟偶像 · 语音/视觉 AI', coming_content:'内容即将上线',
           menu_meta:'Meta', coming_project:'项目筹备中',
           menu_contact:'联系', menu_contact_desc:'电子邮件 · 社交', contact_btn:'联系',
-          store_title:'商店', store_desc:'前往 商店', naver_store:'Naver 智能商店', coupang_coming:'Coupang（即将开业）',
+          store_title:'商店', store_desc:'前往 Golsy 商店', naver_store:'Naver 智能商店', coupang_coming:'Coupang（即将开业）',
           studio_title:'工作室', studio_desc:'Golsy 工作室频道',
           ai_desc:'虚拟偶像与动画 — 计划扩展语音/视觉 AI', showcase_coming:'展示（即将上线）',
           prototype_coming:'原型（即将上线）',
           about_1:' 是 <strong>GOLDENSYNAP</strong> 的旗舰品牌，秉持“让所有信息更有价值”的理念而诞生。',
           about_2:'名称 <strong>Golsy</strong> 代表兼具智慧与魅力的人，象征着创新的数字游民文化。',
-          phase1:'起步 — 商店', phase2:'成长 — 工作室', phase3:'创新 — AI（虚拟偶像与动画）', phase4:'愿景 — Meta（元宇宙 · 游戏 · 应用服务）',
-          logo_p1:'GOLDENSYNAP 创立于八月，灵感来自狮子座最亮的星 <em>轩辕十四（Regulus）</em>，象征领导力与勇气。',
+          phase1:'起步 — 商店', phase2:'成长 — 工作室', phase3:'创新 — AI', phase4:'愿景 — Meta',
+          logo_p1:'GOLDENSYNAP 创立于八月，灵感来自狮子座最亮的星 <em>轩辕十四</em>，象征领导力与勇气。',
           logo_p2:'我们的标志蕴含“狮子之心”，誓做如轩辕十四般闪耀的存在。',
           contact:'联系', connect:'在社交平台与 Golsy 连接', kakao_copy_title:'复制 KakaoTalk ID', toast_kakao:'已复制 KakaoTalk ID：thegolsy',
           biz1:'商号：GOLDENSYNAP | 代表： [姓名] | 统一编号： [123-45-67890]',
           biz2:'网络销售许可证： [2025-首尔江南-00001] | 地址： 待定',
-          roadmap_title:'THE GOLSY 路线图', close:'关闭'
+          roadmap_title:'THE GOLSY 路线图', close:'关闭',
+          yt_modal_title:'选择 YouTube 频道', yt_ch1:'频道1 · 品牌频道', yt_ch2:'频道2 · 游戏（热血江湖）'
         },
         ja: {
           brand:'THE GOLSY', tagline:'情報をつなぎ、価値を創る', tap:'クリックして入る',
@@ -386,19 +466,20 @@
           menu_ai:'AI', menu_ai_desc:'バーチャルアイドル・ボイス/ビジュアルAI', coming_content:'コンテンツ準備中',
           menu_meta:'Meta', coming_project:'プロジェクト準備中',
           menu_contact:'お問い合わせ', menu_contact_desc:'Eメール・SNS', contact_btn:'連絡する',
-          store_title:'ストア', store_desc:'ストアへ移動', naver_store:'Naver スマートストア', coupang_coming:'Coupang（近日オープン）',
-          studio_title:'スタジオ', studio_desc:'スタジオ チャンネル',
+          store_title:'ストア', store_desc:'Golsy ストアへ', naver_store:'Naver スマートストア', coupang_coming:'Coupang（近日オープン）',
+          studio_title:'スタジオ', studio_desc:'Golsy スタジオ チャンネル',
           ai_desc:'バーチャルアイドル&アニメーション — ボイス/ビジュアルAIを拡張予定', showcase_coming:'ショーケース（準備中）',
           prototype_coming:'プロトタイプ（準備中）',
           about_1:' は <strong>GOLDENSYNAP</strong> のフラッグシップブランドであり、「すべての情報により大きな価値を」を理念として誕生しました。',
           about_2:'<strong>Golsy</strong> は知性と魅力を兼ね備えた人を意味し、創造的で革新的なデジタルノマド文化を象徴します。',
-          phase1:'ストア', phase2:'スタジオ', phase3:'AI（バーチャルアイドル&アニメーション）', phase4:'Meta（メタバース・ゲーム・アプリサービス）',
+          phase1:'ストア', phase2:'スタジオ', phase3:'AI', phase4:'Meta',
           logo_p1:'GOLDENSYNAP は8月に誕生。しし座で最も明るい星 <em>レグルス</em> から着想を得ました。勇気とリーダーシップの象徴です。',
           logo_p2:'私たちのロゴはレグルスのように輝く存在であるという誓いを表しています。',
           contact:'お問い合わせ', connect:'SNSで Golsy とつながる', kakao_copy_title:'KakaoTalk ID をコピー', toast_kakao:'KakaoTalk ID をコピーしました：thegolsy',
           biz1:'商号：GOLDENSYNAP | 代表： [氏名] | 事業者番号： [123-45-67890]',
           biz2:'通信販売許可番号： [2025-ソウル江南-00001] | 住所： 準備中',
-          roadmap_title:'THE GOLSY ロードマップ', close:'閉じる'
+          roadmap_title:'THE GOLSY ロードマップ', close:'閉じる',
+          yt_modal_title:'YouTube チャンネルを選択', yt_ch1:'チャンネル1 · ブランド', yt_ch2:'チャンネル2 · ゲーム（熱血江湖）'
         }
       };
 
@@ -430,6 +511,25 @@
       const initial = saved || (navigator.language||'').slice(0,2).toLowerCase();
       apply(['ko','en','zh','ja'].includes(initial)? initial : 'ko');
     })();
+
+    // === YouTube 모달 열기/닫기 ===
+    const ytModal = document.getElementById('ytModal');
+    document.querySelectorAll('.open-yt').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        if (ytModal && typeof ytModal.showModal === 'function') {
+          ytModal.showModal();
+        }
+      });
+    });
+    // 모달 바깥 클릭 시 닫기
+    ytModal?.addEventListener('click', (e)=>{
+      const card = ytModal.querySelector('.modal-card');
+      if(!card) return;
+      const r = card.getBoundingClientRect();
+      const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if(!inside) ytModal.close();
+    });
   </script>
 
   <script src="script.js"></script>
